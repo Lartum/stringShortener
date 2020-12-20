@@ -1,7 +1,21 @@
 import React, { useState } from 'react';
-import { Button, Collapse, IconButton, TextField, Typography } from '@material-ui/core'
+import { Button, Collapse, IconButton, TextField, Typography, makeStyles, Paper, Box } from '@material-ui/core'
 import { Alert } from '@material-ui/lab'
 import CloseIcon from '@material-ui/icons/Close'
+
+
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+      '& .MuiTextField-root': {
+        margin: theme.spacing(1),
+        width: 200,
+      },
+    },
+  }));
+
+
+
 
 function Form() {
     const [ originalString, setOriginalString ] = useState(null)
@@ -113,6 +127,7 @@ const expander = () => {
 
     }
 
+    const classes = useStyles()
     return (
         <div>
             <Collapse
@@ -133,13 +148,19 @@ const expander = () => {
                     { error }
                 </Alert>
             </Collapse>
+
+            <div className={classes.root}>
             <form>
             <TextField 
             id='originalString'
+            label='Long'
             variant='outlined'
+            color='primary'
             onChange={(e) => setOriginalString(e.target.value)}
             />
             <Button
+            variant='contained'
+            color='primary'
             onClick={shortener}
             >Convert</Button>
             <div>
@@ -148,16 +169,29 @@ const expander = () => {
 
             <form>
             <TextField 
+            label='Short'
             id='shortenedString'
             variant='outlined'
+            color='primary'
             onChange={(e)=> setShortString(e.target.value)}
             />
             <Button
+            variant='contained'
+            color='primary'
             onClick={expander}
             >Convert</Button>
             </form>
-                { shortenedString ? <Typography>Shortened String: { Object.keys(shortenedString) }</Typography> : <></>}
-                { expandedString ? <Typography>Expanded String: { Object.values(expandedString) }</Typography> : <></>}
+            </div>
+                { shortenedString ? <Paper> 
+                    <Typography>
+                        Shortened String: <Box color='warning.main'>{ Object.keys(shortenedString) }</Box> 
+                        Entered String: <Box color='warning.main'>{ originalString }</Box>
+                    </Typography></Paper>: <></>}
+                { expandedString ? <Paper> 
+                    <Typography>
+                        Expanded String: <Box color='info.main'> { Object.values(expandedString) }</Box> 
+                        Entered String: <Box color='info.main'>{ shortString }</Box>
+                        </Typography></Paper> : <></>}
         </div>
     );
 }
