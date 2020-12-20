@@ -3,8 +3,8 @@
 <a href=''>Live Demo</a>
 
 ## Tech Stack 
-![react.js](reactIcon.svg)
-![material-ui](material.svg)
+![react.js](reactIcon.svg | width=100)
+![material-ui](material.svg | width=100)
 
 ## Table of Contents
 
@@ -14,8 +14,8 @@
 - [Example](#example)
 - [Test Cases](#test-cases)
 - [Code Section](#code-section)
-   -[Shortener](#shortener)
-   -[Expander](#expander)
+   - [Shortener](#shortener)
+   - [Expander](#expander)
 
 
 ## Description 
