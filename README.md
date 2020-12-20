@@ -1,10 +1,10 @@
 # String Shortener
 
-<a href=''>Live Demo</a>
+<a href='https://sharp-volhard-1ef546.netlify.app/'>Live Demo</a>
 
 ## Tech Stack 
-![react.js](reactIcon.svg | width=100)
-![material-ui](material.svg | width=100)
+![react.js](reactIcon.svg =100x)
+![material-ui](material.svg =100x)
 
 ## Table of Contents
 
@@ -38,8 +38,8 @@ Run " npm i " in the root folder
 <a href='https://material-ui.com/components/material-icons/'>Material UI Icons</a>
 
 ## Example
-![plot](example1.png | width=100)
-![plot](example2.png | width=100)
+![plot](example1.png )
+![plot](example2.png )
 
 ## Code Section
 
