@@ -3,8 +3,8 @@
 <a href='https://sharp-volhard-1ef546.netlify.app/'>Live Demo</a>
 
 ## Tech Stack 
-![react.js](reactIcon.svg =100x)
-![material-ui](material.svg =100x)
+![react.js](reactIcon.svg)
+![material-ui](material.svg)
 
 ## Table of Contents
 
