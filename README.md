@@ -3,7 +3,7 @@
 <a href=''>Live Demo</a>
 
 ## Tech Stack 
-![react.js](reacticon.svg)
+![react.js](reactIcon.svg)
 ![material-ui](material.svg)
 
 ## Table of Contents
@@ -48,7 +48,8 @@ Run " npm i " in the root folder
 #### Validate the Strings
 
 Check if a string is entered
-```
+
+```js
 if(!string){
             setError('Field cannot be empty')
             setCloseError(false)
@@ -59,7 +60,8 @@ if(!string){
 ```
 
 #### Find an existing shortened string
-```
+
+```js
  const savedString = JSON.parse(localStorage.getItem('strings')) 
         if(savedString){
         const existingString = savedString.find((element) => {
@@ -78,7 +80,7 @@ if(!string){
 ```
 #### Convert to words to its ASCII code exquivalent and increment  
 
-```
+```js
 const asciiCodeOfText = originalString.split('').map((word) => word.charCodeAt(0))
         const newCodes = asciiCodeOfText.map((code) => {
             const newCode = code + 1
@@ -88,7 +90,7 @@ const asciiCodeOfText = originalString.split('').map((word) => word.charCodeAt(0
 
 #### Validation for unique Strings
 
-```
+```js
  const shortened = () => {
         // newCodes.map((code) => String.fromCharCode(code)).join('').slice(0, originalString.length / 2 )
             const editCode = newCodes.map((code) => String.fromCharCode(code)).join('')
@@ -119,7 +121,7 @@ const asciiCodeOfText = originalString.split('').map((word) => word.charCodeAt(0
 
 #### Validations for the expander string
 
-```
+```js
  if( validate(shortString) === false) {
                 return
             }
@@ -132,7 +134,7 @@ const asciiCodeOfText = originalString.split('').map((word) => word.charCodeAt(0
 
 #### Set the expanded string
 
-```
+```js
  const existingString = savedStrings.find((element) => { 
        const [foundElement] = Object.keys(element)
         if(foundElement === shortString){
