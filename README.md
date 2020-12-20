@@ -38,8 +38,8 @@ Run " npm i " in the root folder
 <a href='https://material-ui.com/components/material-icons/'>Material UI Icons</a>
 
 ## Example
-![plot](example1.png)
-![plot](example2.png)
+![plot](example1.png | width=100)
+![plot](example2.png | width=100)
 
 ## Code Section
 
