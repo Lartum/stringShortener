@@ -31,7 +31,7 @@ function Form() {
         }
 
         // Find the existing localstorage Item
-        const savedString = JSON.parse(localStorage.getItem('strings')) 
+        const savedString = JSON.parse(localStorage.getItem('stringsCollection')) 
         if(savedString){
         const existingString = savedString.find((element) => {
             const [foundElement] = Object.values(element)
@@ -47,13 +47,14 @@ function Form() {
         }
         
         // If no existing localstorage is found proceed with this logic
-        const asciiCodeOfText = originalString.split('').map((word) => word.charCodeAt(0))
+        
+        const asciiCodeOfText = originalString.trim().split('').map((word) => word.charCodeAt(0))
         const newCodes = asciiCodeOfText.map((code) => {
             const newCode = code + 1
             return newCode
         })
         const shortened = () => {
-        // newCodes.map((code) => String.fromCharCode(code)).join('').slice(0, originalString.length / 2 )
+
             const editCode = newCodes.map((code) => String.fromCharCode(code)).join('')
             const newcode1 = editCode.slice( 0, originalString.length / 2 )
             const newcode2 = editCode.slice( originalString.length / 2, originalString.length - 1 )
@@ -84,11 +85,11 @@ function Form() {
         //If the strings already exists in localstorage then append the current string 
         if(savedString){
             savedString.push(strings)
-            localStorage.setItem('strings', JSON.stringify(savedString))
+            localStorage.setItem('stringsCollection', JSON.stringify(savedString))
             return setShortenedString(strings)
         }
 
-        localStorage.setItem('strings', JSON.stringify([strings]))
+        localStorage.setItem('stringsCollection', JSON.stringify([strings]))
         return setShortenedString(strings)
     }
 
@@ -97,7 +98,7 @@ const expander = () => {
         if( validate(shortString) === false) {
                 return
             }
-        const savedStrings = JSON.parse(localStorage.getItem('strings')) 
+        const savedStrings = JSON.parse(localStorage.getItem('stringsCollection')) 
         if(!savedStrings){
             setCloseError(false)
             return setError('no matches found')
