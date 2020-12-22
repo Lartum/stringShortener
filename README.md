@@ -1,6 +1,6 @@
 # String Shortener
 
-<a href='https://sharp-volhard-1ef546.netlify.app/'>Live Demo</a>
+<a href='https://nifty-bohr-4c3645.netlify.app'>Live Demo</a>
 
 ## Tech Stack 
 ![react.js](reactIcon.svg)
