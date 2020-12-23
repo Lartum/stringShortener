@@ -14,9 +14,6 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-
-
-
 function Form() {
     const [ originalString, setOriginalString ] = useState(null)
     const [ shortenedString, setShortenedString ] = useState(null)
@@ -45,41 +42,11 @@ function Form() {
             return setShortenedString(existingString)
             }
         }
-        
         // If no existing localstorage is found proceed with this logic
-        
-        const asciiCodeOfText = originalString.trim().split('').map((word) => word.charCodeAt(0))
-        const newCodes = asciiCodeOfText.map((code) => {
-            const newCode = code + 1
-            return newCode
-        })
-        const shortened = () => {
 
-            const editCode = newCodes.map((code) => String.fromCharCode(code)).join('')
-            const newcode1 = editCode.slice( 0, originalString.length / 2 )
-            const newcode2 = editCode.slice( originalString.length / 2, originalString.length - 1 )
-            
-            if(savedString){
-                const existingShortened = savedString.find((element) => {
-                    const [foundString] = Object.keys(element)
-                    if(foundString){
-                        return foundString
-                    }
-                    return undefined
-                })
-    
-                if(existingShortened){
-                    return newcode2
-                }
-    
-                return newcode1
-            }
-            return newcode1
-        } 
-
-
+        const shortened = newShorten(originalString)
         const strings = { 
-            [shortened()]: originalString 
+            [shortened]: originalString 
         }
 
         //If the strings already exists in localstorage then append the current string 
@@ -92,6 +59,32 @@ function Form() {
         localStorage.setItem('stringsCollection', JSON.stringify([strings]))
         return setShortenedString(strings)
     }
+
+const newShorten = (string) => {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    var charactersLength = characters.length;
+    var stringLength = string.length
+    const savedString = JSON.parse(localStorage.getItem('stringsCollection')) 
+    const stringArray = string.split('')
+    result = stringArray.map((word) => characters.charAt(Math.floor(Math.random() * charactersLength)))
+    var shortenedString = result.splice(0 , stringLength/2).join("")
+    if(savedString){
+        const sameString = savedString.find((element) => {
+            const [elmentKey] = Object.keys(element)
+            if(elmentKey === shortenedString){
+                return true
+            }
+            return undefined
+        })
+        if(sameString){
+            newShorten(string)
+        } else {
+            return shortenedString
+        }
+    }  
+   return shortenedString
+}
 
 
 const expander = () => {
