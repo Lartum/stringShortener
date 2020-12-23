@@ -22,6 +22,9 @@ function Form() {
     const [ error, setError ] = useState(null)
     const [ closeError, setCloseError ] = useState(true)
 
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+    var charactersLength = characters.length
+
     const shortener = () => {
         if( validate(originalString)=== false){
             return
@@ -61,13 +64,10 @@ function Form() {
     }
 
 const newShorten = (string) => {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-    var charactersLength = characters.length;
     var stringLength = string.length
     const savedString = JSON.parse(localStorage.getItem('stringsCollection')) 
     const stringArray = string.split('')
-    result = stringArray.map((word) => characters.charAt(Math.floor(Math.random() * charactersLength)))
+    const result = stringArray.map((word) => characters.charAt(Math.floor(Math.random() * charactersLength)))
     var shortenedString = result.splice(0 , stringLength/2).join("")
     if(savedString){
         const sameString = savedString.find((element) => {
