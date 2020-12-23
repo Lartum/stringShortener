@@ -64,11 +64,12 @@ function Form() {
     }
 
 const newShorten = (string) => {
-    var stringLength = string.length
+    const trimmedString = string.trim()
+    const stringLength = trimmedString.length
     const savedString = JSON.parse(localStorage.getItem('stringsCollection')) 
-    const stringArray = string.split('')
+    const stringArray = trimmedString.split('')
     const result = stringArray.map((word) => characters.charAt(Math.floor(Math.random() * charactersLength)))
-    var shortenedString = result.splice(0 , stringLength/2).join("")
+    const shortenedString = result.splice(0 , stringLength/2).join("")
     if(savedString){
         const sameString = savedString.find((element) => {
             const [elmentKey] = Object.keys(element)
